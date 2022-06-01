@@ -1,10 +1,6 @@
 package ssmclient
 
 import (
-	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/service/ssm"
-	"github.com/mmmorris1975/ssm-session-client/datachannel"
-	"golang.org/x/net/netutil"
 	"io"
 	"log"
 	"net"
@@ -12,6 +8,11 @@ import (
 	"os/signal"
 	"strconv"
 	"syscall"
+
+	"github.com/aws/aws-sdk-go-v2/aws"
+	"github.com/aws/aws-sdk-go-v2/service/ssm"
+	"github.com/brunetto/ssm-session-client/datachannel"
+	"golang.org/x/net/netutil"
 )
 
 // PortForwardingInput configures the port forwarding session parameters.
