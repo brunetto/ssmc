@@ -49,6 +49,40 @@ func ShellSession(cfg aws.Config, target string, initCmd ...io.Reader) error {
 	return <-errCh
 }
 
+func ShellSessionV2(cfg aws.Config, target string, r io.Reader, w io.Writer, initCmd ...io.Reader) error {
+	c := new(datachannel.SsmDataChannel)
+	if err := c.Open(cfg, &ssm.StartSessionInput{Target: aws.String(target)}); err != nil {
+		return err
+	}
+	defer c.Close()
+
+	// do platform-specific setup ... signal handling, stdin modification, etc...
+	if err := initialize(c); err != nil {
+		return err
+	}
+	defer cleanup() //nolint:errcheck // platform-specific cleanup, not called if terminated by a signal
+
+	errCh := make(chan error, 5)
+	go func() {
+		if _, err := io.Copy(c, r); err != nil {
+			errCh <- err
+		}
+	}()
+
+	for _, cmd := range initCmd {
+		_, _ = io.Copy(c, cmd)
+	}
+
+	if _, err := io.Copy(w, c); err != nil {
+		if !errors.Is(err, io.EOF) {
+			errCh <- err
+		}
+		close(errCh)
+	}
+
+	return <-errCh
+}
+
 func updateTermSize(c datachannel.DataChannel) error {
 	rows, cols, err := getWinSize()
 	if err != nil {
