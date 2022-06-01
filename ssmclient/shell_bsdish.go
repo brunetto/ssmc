@@ -1,10 +1,12 @@
+//go:build darwin || netbsd || freebsd || openbsd || dragonfly
 // +build darwin netbsd freebsd openbsd dragonfly
 
 package ssmclient
 
 import (
-	"golang.org/x/sys/unix"
 	"os"
+
+	"golang.org/x/sys/unix"
 )
 
 func cleanup() error {
