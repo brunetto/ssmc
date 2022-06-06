@@ -11,6 +11,7 @@ require (
 	github.com/aws/aws-sdk-go-v2/service/ssm v1.1.1
 	github.com/google/uuid v1.2.0
 	github.com/gorilla/websocket v1.4.2
+	github.com/pkg/errors v0.9.1
 	golang.org/x/net v0.0.0-20201216054612-986b41b23924
 	golang.org/x/sys v0.0.0-20210124154548-22da62e12c0c
 )

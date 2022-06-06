@@ -133,6 +133,11 @@ func (c *SsmDataChannel) WriteTo(w io.Writer) (n int64, err error) {
 		if nr > 0 {
 			payload, err = c.HandleMsg(buf[:nr])
 			if err != nil {
+				if errors.Is(err, io.EOF) {
+					// just exiting, no error printed since it's EOF
+					return 0, err
+				}
+
 				log.Printf("WriteTo HandleMsg error: %v", err)
 				return int64(nw), err
 			}

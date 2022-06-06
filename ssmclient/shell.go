@@ -1,7 +1,6 @@
 package ssmclient
 
 import (
-	"errors"
 	"io"
 	"log"
 	"os"
@@ -9,6 +8,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
 	"github.com/brunetto/ssm-session-client/datachannel"
+	"github.com/pkg/errors"
 )
 
 // ShellSession starts a shell session with the instance specified in the target parameter.  The
@@ -77,6 +77,7 @@ func ShellSessionV2(cfg aws.Config, target string, r io.Reader, w io.Writer, ini
 		if !errors.Is(err, io.EOF) {
 			errCh <- err
 		}
+
 		close(errCh)
 	}
 
