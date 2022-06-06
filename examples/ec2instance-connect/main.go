@@ -10,7 +10,7 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/ec2instanceconnect"
-	"github.com/brunetto/ssm-session-client/ssmclient"
+	"github.com/brunetto/ssmc/ssmclient"
 )
 
 // Start a SSH session. This program is meant to be configured as a ProxyCommand in the ssh_config file.

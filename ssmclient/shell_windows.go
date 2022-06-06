@@ -5,7 +5,7 @@ package ssmclient
 
 import (
 	"errors"
-	"github.com/brunetto/ssm-session-client/datachannel"
+	"github.com/brunetto/ssmc/datachannel"
 )
 
 func initialize(c datachannel.DataChannel) error {

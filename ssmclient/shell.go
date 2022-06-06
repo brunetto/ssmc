@@ -7,7 +7,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
-	"github.com/brunetto/ssm-session-client/datachannel"
+	"github.com/brunetto/ssmc/datachannel"
 	"github.com/pkg/errors"
 )
 

@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/aws/aws-sdk-go-v2/config"
-	"github.com/brunetto/ssm-session-client/ssmclient"
+	"github.com/brunetto/ssmc/ssmclient"
 )
 
 // Start a SSM SSH session.

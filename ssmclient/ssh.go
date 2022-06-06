@@ -9,7 +9,7 @@ import (
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/ssm"
-	"github.com/brunetto/ssm-session-client/datachannel"
+	"github.com/brunetto/ssmc/datachannel"
 )
 
 // SSHSession starts a specialized port forwarding session to allow SSH connectivity to the target instance over

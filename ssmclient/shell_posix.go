@@ -9,7 +9,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/brunetto/ssm-session-client/datachannel"
+	"github.com/brunetto/ssmc/datachannel"
 	"golang.org/x/sys/unix"
 )
 
